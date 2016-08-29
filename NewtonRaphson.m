@@ -21,7 +21,7 @@ function raiz = NewtonRaphson( Xo, erroTolerance)
     erro_abs = 100;
     iterador = 0;
     
-    while (erro_abs > erroTolerance | iterador < 2)
+    while (erro_abs > erroTolerance)
         iterador = iterador + 1; %iterador de controle
         disp ("iterador: "), disp (iterador)
         xold = Xo; %salvando valor antigo
