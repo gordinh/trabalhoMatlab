@@ -1,0 +1,34 @@
+function rotina()
+       tamanhoFigura = get(groot, 'Screensize');
+       %primeira funcao
+       f = [1 0 -1 -1];           
+       xo = 1.5;
+       errorTolerance = 0.01;
+       xa = 1;
+       xb = 3;
+       figureB = Bisseccao(f, xa, xb, errorTolerance);
+       figureNR = NewtonRaphson(f, xo, errorTolerance);
+       
+       figure('Position', [1 tamanhoFigura(4)/2 tamanhofi]
+       
+       
+       %segunda funcao
+       f = [1 0 -1 -2];
+       xo = 1.5;
+       errorTolerance = 0.01;
+       xa = 1;
+       xb = 2;
+       figureB = Bisseccao(f, xa, xb, errorTolerance);
+       figureNR = NewtonRaphson(f, xo, errorTolerance);
+       
+       
+       %terceira funcao
+       f = [1 0 3 -5];
+       xo = 1.5;
+       errorTolerance = 0.01;
+       xa = 1;
+       xb = 2;
+       figureB = Bisseccao(f, xa, xb, errorTolerance);
+       figureNR = NewtonRaphson(f, xo, errorTolerance);      
+
+end 

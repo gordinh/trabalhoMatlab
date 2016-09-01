@@ -1,4 +1,4 @@
-function Bisseccao(f, xa, xb, erroTolerance, realRoot, graphic)
+function Bisseccao(f, xa, xb, erroTolerance)
     %Metodo da Bisseccao (intervalar)
     %retorna a raiz estimada da funÃ§Ã£o
     %func = funÃ§Ã£o a ser calculada
@@ -20,10 +20,11 @@ function Bisseccao(f, xa, xb, erroTolerance, realRoot, graphic)
     x = 0;
     iterador = 0;
     fa = polyval(f,xa); 
-    erro = 100;
+   	fb = polyval(f,xb);
+    erro_abs = 100;
     vectorX = []; %vetor com valores de x para plotagem em grafico
     vectorY = []; %vetor com valores de y para plotagem em grafico
-    while (erro > erroTolerance)
+    while (erro_abs > erroTolerance)
         xold = x; %salvando o valor antigo de x, para calculo do erro relativo
         x = (xa+xb) / 2; %calculando o valor de x sendo a media dos extremos do intervalo
         
@@ -32,39 +33,38 @@ function Bisseccao(f, xa, xb, erroTolerance, realRoot, graphic)
         
         vectorX = [vectorX x]; %#ok<*AGROW> %adicionando valores de x no vetor
         vectorY = [vectorY fx];  %adicionando valores de y no vetor
-        
+        disp ('The value of Xi is:'), disp (x)
+        disp ('The value of fx is:'), disp (fx)
         signal = fa * fx;
+        disp ('xa: '), disp (xa)
+        disp ('fa: '), disp (fa)
+        disp ('xb: '), disp (xb)
+        disp ('fb: '), disp (fb)
         if (signal > 0)
             xa = x;
             fa = fx;
         elseif (signal < 0)
            xb = x;
-           fb = fx;            %#ok<NASGU>
+           fb = fx;           
         else
             %caso x seja a raiz
             disp ('fim')
             return;
         end
-        erro = abs((x-xold)/x)*100;
+        erro_abs = abs((x-xold)/x)*100;
         disp ('iteracao: '), disp (iterador)
         disp ('raiz_estimada: '), disp(x)
-        disp ('Erro Relativo: '), disp (erro)
+        disp ('erro_abs: '), disp (erro_abs)
         iterador = iterador + 1;
-        errorAbsolute = (realRoot - x);
-        disp ('Erro Absoluto: '), disp (errorAbsolute)
     end
     disp ('iteracoes_maximas: '), disp (iterador)
     disp ('raiz_estimada: '), disp (x)
     
     %%%Gerando os gráficos e imagens a partir daqui
-    figure(graphic);
-    title('Graph of Newton-Raphson method');
-    hold on;
-    grid on;
-    plot(1:0.2:3, polyval(f, 1:0.2:3), '-r');
+    plot(0:0.2:2, polyval(f, -2:0.2:2), '-r');
     title('Grafico - Bisseccao');
     xlabel('x');
-    ylabel(f);
+    ylabel('função');
     plot(vectorX, vectorY, '.b');
 end
             

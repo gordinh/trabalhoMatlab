@@ -36,9 +36,8 @@ function NewtonRaphson(f, Xo, erroTolerance, realRoot, graphic)
         %disp('fx'), disp(fx); 
         %disp('fd'), disp(fd);
         erro = abs((Xo-xold)/Xo)*100; %calculando erro relativo
-        disp ('Erro Relativo: '), disp (erro);
-        errorAbsolute = (realRoot - Xo);
-        disp ('Erro Absoluto: '), disp (abs(errorAbsolute));
+        disp ('Erro Relativo:'), disp (erro_abs);
+        errorAbsolute = 
     end
     
     disp('Raiz estimada: '), disp(Xo)
